@@ -1,0 +1,23 @@
+# Next.js
+.next/
+out/
+build/
+
+# Node
+node_modules/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# System
+.DS_Store
+Thumbs.db
+*.log
+
+# Research data (raw scrape cache — not needed in repo)
+data/raw/
+
+# Type declarations (auto-generated)
+next-env.d.ts

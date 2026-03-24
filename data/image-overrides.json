@@ -1,0 +1,6 @@
+{
+  "_INSTRUCTIONS": "Map product slug to one or more local image filenames. Filenames are relative to CTA_LOCAL_IMAGE_DIR (project root by default). Example: 'whiteman-stxdf-ride-on-trowel': ['IMG_2055.PNG']",
+  "whiteman-stxdf-ride-on-trowel": ["IMG_2058.PNG"],
+  "allen-rop180-polishing-rider": ["IMG_2059.PNG"],
+  "husqvarna-pg510-concrete-grinder": ["IMG_2057.PNG"]
+}
