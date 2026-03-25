@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ProductCard } from "@/components/product-card";
 import { Badge } from "@/components/ui/badge";
 import { FadeIn, FadeInGroup, FadeInItem } from "@/components/motion";
@@ -67,35 +68,35 @@ export default async function ProductsPage({
               Search
             </button>
             {(query || activeCategory) && (
-              <a
+              <Link
                 href="/products"
                 className="px-4 py-1.5 rounded-md border border-border text-sm text-muted-foreground hover:text-foreground transition-colors text-center"
               >
                 Clear
-              </a>
+              </Link>
             )}
           </form>
         </FadeIn>
 
         <FadeIn delay={0.1}>
           <div className="flex flex-wrap gap-2 mb-8">
-            <a href="/products">
+            <Link href="/products">
               <Badge
                 variant={!activeCategory ? "default" : "secondary"}
                 className="cursor-pointer hover:opacity-80 transition-opacity"
               >
                 All
               </Badge>
-            </a>
+            </Link>
             {categories.slice(0, 20).map((cat) => (
-              <a key={cat} href={`/products?category=${encodeURIComponent(cat)}`}>
+              <Link key={cat} href={`/products?category=${encodeURIComponent(cat)}`}>
                 <Badge
                   variant={activeCategory === cat ? "default" : "secondary"}
                   className="cursor-pointer hover:opacity-80 transition-opacity"
                 >
                   {cat}
                 </Badge>
-              </a>
+              </Link>
             ))}
           </div>
         </FadeIn>
@@ -105,7 +106,7 @@ export default async function ProductsPage({
           <FadeIn>
             <div className="py-24 text-center text-muted-foreground">
               No products found for those filters.{" "}
-              <a href="/products" className="text-primary underline">Clear filters</a>
+              <Link href="/products" className="text-primary underline">Clear filters</Link>
             </div>
           </FadeIn>
         ) : (

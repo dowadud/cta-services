@@ -4,7 +4,7 @@ import { Phone, MapPin, Mail, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { FadeIn, FadeInGroup, FadeInItem } from "@/components/motion";
+import { FadeIn } from "@/components/motion";
 import { COMPANY } from "@/lib/company";
 
 export const metadata: Metadata = {
@@ -43,7 +43,7 @@ export default function AboutPage() {
                 CTA Services was built around a straightforward idea: floor equipment professionals deserve a supplier who understands the work, responds quickly, and stands behind the machines they provide.
               </p>
               <p>
-                We work directly with flooring subcontractors, facility maintenance crews, concrete preparation companies, and general contractors who need equipment that shows up ready and performs through the job. When something goes wrong mid-project, we're the team you can call.
+                We work directly with flooring subcontractors, facility maintenance crews, concrete preparation companies, and general contractors who need equipment that shows up ready and performs through the job. When something goes wrong mid-project, we&apos;re the team you can call.
               </p>
               <p>
                 Our inventory covers the full range of commercial and industrial floor equipment — from daily-maintenance auto scrubbers to large-format shot blasters, ride-on scrapers, planetary grinders, and concrete power trowels. For every product we sell, we offer the parts and service to back it up.
@@ -85,7 +85,7 @@ export default function AboutPage() {
           <div className="mb-16">
             <h2 className="text-2xl font-bold text-foreground mb-4">Service Area</h2>
             <p className="text-muted-foreground mb-6 max-w-xl">
-              We're located in Concord, NC and regularly serve the following communities:
+              We&apos;re located in Concord, NC and regularly serve the following communities:
             </p>
             <div className="flex flex-wrap gap-2">
               {SERVICE_AREA.map((city) => (

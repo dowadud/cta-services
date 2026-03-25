@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { FadeIn, FadeInGroup, FadeInItem } from "@/components/motion";
+import { FadeIn } from "@/components/motion";
 import { getProductBySlug, getAllProducts } from "@/lib/products";
 import { COMPANY } from "@/lib/company";
 

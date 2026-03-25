@@ -11,7 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { ProductCard } from "@/components/product-card";
 import { FadeIn, FadeInGroup, FadeInItem } from "@/components/motion";
 import { COMPANY } from "@/lib/company";
-import { getFeaturedProducts, getCategories } from "@/lib/products";
+import { getFeaturedProducts } from "@/lib/products";
 
 export const metadata: Metadata = {
   title: "CTA Services LLC — Flooring Equipment Sales, Rentals & Service | Concord, NC",
@@ -54,7 +54,6 @@ const WHY_CTA = [
 
 export default function HomePage() {
   const featured = getFeaturedProducts(6);
-  const allCategories = getCategories().slice(0, 8);
 
   return (
     <div className="flex flex-col">

@@ -105,7 +105,7 @@ export default function ServiceRepairPage() {
                 ))}
               </div>
               <p className="mt-4 text-sm text-muted-foreground">
-                Don't see your brand? Call us — we work on most major floor equipment and can source parts for many additional brands.
+                Don&apos;t see your brand? Call us — we work on most major floor equipment and can source parts for many additional brands.
               </p>
             </div>
           </FadeIn>
