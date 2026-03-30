@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Search, SlidersHorizontal } from "lucide-react";
 import { ProductCard } from "@/components/product-card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { FadeIn, FadeInGroup, FadeInItem } from "@/components/motion";
 import { getAllProducts, getCategories } from "@/lib/products";
 
@@ -48,56 +51,63 @@ export default async function ProductsPage({
           </div>
         </FadeIn>
 
-        {/* Search + Category filters */}
+        {/* Search + filters */}
         <FadeIn delay={0.05}>
-          <form method="GET" className="mb-8 flex flex-col sm:flex-row gap-3">
-            <input
-              type="text"
-              name="q"
-              defaultValue={query}
-              placeholder="Search equipment…"
-              className="flex-1 h-9 rounded-md border border-input bg-transparent px-3 py-1 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-            />
-            {activeCategory && (
-              <input type="hidden" name="category" value={activeCategory} />
-            )}
-            <button
-              type="submit"
-              className="px-4 py-1.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
-            >
-              Search
-            </button>
-            {(query || activeCategory) && (
-              <Link
-                href="/products"
-                className="px-4 py-1.5 rounded-md border border-border text-sm text-muted-foreground hover:text-foreground transition-colors text-center"
-              >
-                Clear
-              </Link>
-            )}
+          <form method="GET" className="mb-6">
+            <div className="flex flex-col sm:flex-row gap-3">
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
+                <Input
+                  type="text"
+                  name="q"
+                  defaultValue={query}
+                  placeholder="Search equipment by name or type…"
+                  className="pl-9"
+                />
+              </div>
+              {activeCategory && (
+                <input type="hidden" name="category" value={activeCategory} />
+              )}
+              <Button type="submit" className="sm:w-auto">
+                <Search className="w-4 h-4 mr-2" />
+                Search
+              </Button>
+              {(query || activeCategory) && (
+                <Button asChild variant="outline" className="sm:w-auto">
+                  <Link href="/products">Clear filters</Link>
+                </Button>
+              )}
+            </div>
           </form>
         </FadeIn>
 
+        {/* Category filter */}
         <FadeIn delay={0.1}>
-          <div className="flex flex-wrap gap-2 mb-8">
-            <Link href="/products">
-              <Badge
-                variant={!activeCategory ? "default" : "secondary"}
-                className="cursor-pointer hover:opacity-80 transition-opacity"
-              >
-                All
-              </Badge>
-            </Link>
-            {categories.slice(0, 20).map((cat) => (
-              <Link key={cat} href={`/products?category=${encodeURIComponent(cat)}`}>
+          <div className="mb-8">
+            <div className="flex items-center gap-2 mb-3">
+              <SlidersHorizontal className="w-3.5 h-3.5 text-muted-foreground" />
+              <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Filter by category</span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <Link href="/products">
                 <Badge
-                  variant={activeCategory === cat ? "default" : "secondary"}
+                  variant={!activeCategory ? "default" : "secondary"}
                   className="cursor-pointer hover:opacity-80 transition-opacity"
                 >
-                  {cat}
+                  All Equipment
                 </Badge>
               </Link>
-            ))}
+              {categories.slice(0, 20).map((cat) => (
+                <Link key={cat} href={`/products?category=${encodeURIComponent(cat)}${query ? `&q=${encodeURIComponent(query)}` : ""}`}>
+                  <Badge
+                    variant={activeCategory === cat ? "default" : "secondary"}
+                    className="cursor-pointer hover:opacity-80 transition-opacity"
+                  >
+                    {cat}
+                  </Badge>
+                </Link>
+              ))}
+            </div>
           </div>
         </FadeIn>
 
@@ -121,9 +131,15 @@ export default async function ProductsPage({
 
         {filtered.length > 120 && (
           <FadeIn delay={0.2}>
-            <p className="mt-8 text-center text-sm text-muted-foreground">
-              Showing 120 of {filtered.length} results. Use the search or category filters to narrow down.
-            </p>
+            <div className="mt-10 text-center space-y-3">
+              <p className="text-sm text-muted-foreground">
+                Showing <span className="font-medium text-foreground">120</span> of{" "}
+                <span className="font-medium text-foreground">{filtered.length.toLocaleString()}</span> results.
+              </p>
+              <p className="text-xs text-muted-foreground">
+                Use the search bar or category filter to narrow your results, or call us to find a specific model.
+              </p>
+            </div>
           </FadeIn>
         )}
       </div>

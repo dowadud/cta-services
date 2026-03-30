@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Phone, ImageOff } from "lucide-react";
+
 import type { ClientProduct } from "@/lib/product-types";
 import { COMPANY } from "@/lib/company";
 import { cn } from "@/lib/utils";
@@ -34,9 +35,9 @@ export function ProductCard({ product, className }: ProductCardProps) {
             sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw"
           />
         ) : (
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-            <ImageOff className="w-8 h-8 text-muted-foreground/40" />
-            <Badge variant="warning" className="text-[10px]">Image needed</Badge>
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-secondary/60">
+            <ImageOff className="w-8 h-8 text-muted-foreground/30" />
+            <p className="text-[10px] text-muted-foreground/50">Photo coming soon</p>
           </div>
         )}
         <div className="absolute top-2 left-2">

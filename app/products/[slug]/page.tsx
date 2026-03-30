@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { Phone, Mail, ArrowLeft, FileText, ImageOff } from "lucide-react";
+import { Phone, Mail, ArrowLeft, FileText, ChevronRight, ShieldCheck, Clock, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -31,6 +31,12 @@ export async function generateMetadata({
   };
 }
 
+const ASSURANCES = [
+  { icon: ShieldCheck, label: "Certified service team" },
+  { icon: Clock, label: "Same-day response" },
+  { icon: Truck, label: "Charlotte metro delivery" },
+];
+
 export default async function ProductDetailPage({
   params,
 }: {
@@ -45,15 +51,16 @@ export default async function ProductDetailPage({
   return (
     <div className="pt-28 pb-20">
       <div className="container mx-auto px-4">
-        {/* Back */}
+
+        {/* Breadcrumb */}
         <FadeIn>
-          <Link
-            href="/products"
-            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground mb-8 transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Products
-          </Link>
+          <nav className="flex items-center gap-1.5 text-sm text-muted-foreground mb-8" aria-label="Breadcrumb">
+            <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
+            <ChevronRight className="w-3.5 h-3.5 shrink-0" />
+            <Link href="/products" className="hover:text-foreground transition-colors">Products</Link>
+            <ChevronRight className="w-3.5 h-3.5 shrink-0" />
+            <span className="text-foreground line-clamp-1">{product.name}</span>
+          </nav>
         </FadeIn>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
@@ -62,7 +69,7 @@ export default async function ProductDetailPage({
             <div className="space-y-3">
               {product.images.length > 0 ? (
                 <>
-                  <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-secondary">
+                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-secondary">
                     <Image
                       src={product.images[0].src}
                       alt={product.images[0].alt}
@@ -75,7 +82,7 @@ export default async function ProductDetailPage({
                   {product.images.length > 1 && (
                     <div className="grid grid-cols-4 gap-2">
                       {product.images.slice(1).map((img, i) => (
-                        <div key={i} className="relative aspect-square rounded-md overflow-hidden bg-secondary">
+                        <div key={i} className="relative aspect-square rounded-lg overflow-hidden bg-secondary">
                           <Image src={img.src} alt={img.alt} fill className="object-cover" sizes="120px" />
                         </div>
                       ))}
@@ -83,13 +90,19 @@ export default async function ProductDetailPage({
                   )}
                 </>
               ) : (
-                <div className="aspect-[4/3] rounded-lg bg-secondary flex flex-col items-center justify-center gap-3">
-                  <ImageOff className="w-12 h-12 text-muted-foreground/40" />
-                  <Badge variant="warning">Image needed</Badge>
-                  <p className="text-xs text-muted-foreground text-center max-w-48">
-                    Add a photo to{" "}
-                    <code className="font-mono text-[10px]">public/product-images/{product.slug}-1.png</code>
+                <div className="aspect-[4/3] rounded-xl bg-secondary flex flex-col items-center justify-center gap-3">
+                  <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center">
+                    <FileText className="w-8 h-8 text-muted-foreground/40" />
+                  </div>
+                  <p className="text-sm text-muted-foreground text-center max-w-48">
+                    Contact us for photos and full specifications on this unit.
                   </p>
+                  <Button asChild size="sm" variant="outline">
+                    <a href={COMPANY.telHref}>
+                      <Phone className="w-3.5 h-3.5 mr-1.5" />
+                      {COMPANY.phoneDisplay}
+                    </a>
+                  </Button>
                 </div>
               )}
             </div>
@@ -99,20 +112,12 @@ export default async function ProductDetailPage({
           <FadeIn delay={0.1}>
             <div className="space-y-6">
               <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <Badge variant="secondary" className="text-[10px] uppercase tracking-wider">
-                    {categoryShort}
-                  </Badge>
-                  <Badge
-                    variant={product.imageStatus === "matched" ? "secondary" : "warning"}
-                    className="text-[10px]"
-                  >
-                    {product.imageStatus === "matched" ? "Photo available" : "Image needed"}
-                  </Badge>
-                </div>
+                <Badge variant="secondary" className="text-[10px] uppercase tracking-wider mb-3">
+                  {categoryShort}
+                </Badge>
                 <h1 className="text-2xl md:text-3xl font-bold text-foreground">{product.name}</h1>
                 {product.price && (
-                  <p className="mt-2 text-2xl font-bold text-primary">{product.price.display}</p>
+                  <p className="mt-3 text-2xl font-bold text-primary">{product.price.display}</p>
                 )}
               </div>
 
@@ -143,11 +148,11 @@ export default async function ProductDetailPage({
                   <AccordionItem value="specs">
                     <AccordionTrigger className="text-sm font-semibold">Specifications</AccordionTrigger>
                     <AccordionContent>
-                      <div className="space-y-2">
+                      <div className="space-y-0">
                         {Object.entries(product.specs).map(([key, val]) => (
                           <div
                             key={key}
-                            className="flex items-start justify-between gap-4 py-2 border-b border-border last:border-0 text-sm"
+                            className="flex items-start justify-between gap-4 py-2.5 border-b border-border last:border-0 text-sm"
                           >
                             <span className="text-muted-foreground shrink-0">{key}</span>
                             <span className="text-foreground text-right">{val}</span>
@@ -166,7 +171,7 @@ export default async function ProductDetailPage({
                 <Button asChild size="lg" className="w-full">
                   <Link href={`/contact?product=${encodeURIComponent(product.name)}&type=quote`}>
                     <FileText className="mr-2 w-4 h-4" />
-                    Request Quote
+                    Request a Quote
                   </Link>
                 </Button>
                 <div className="grid grid-cols-2 gap-3">
@@ -185,15 +190,41 @@ export default async function ProductDetailPage({
                 </div>
               </div>
 
-              {/* Company assurance */}
-              <div className="rounded-lg bg-secondary/40 p-4 text-xs text-muted-foreground space-y-1">
-                <p className="font-medium text-foreground text-sm">{COMPANY.legalName}</p>
-                <p>{COMPANY.fullAddress}</p>
-                <p>{COMPANY.phoneDisplay} · {COMPANY.email}</p>
+              {/* Assurance bar */}
+              <div className="rounded-xl border border-border bg-card p-5">
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-4">
+                  {COMPANY.legalName}
+                </p>
+                <div className="space-y-3">
+                  {ASSURANCES.map(({ icon: Icon, label }) => (
+                    <div key={label} className="flex items-center gap-3 text-sm text-foreground">
+                      <div className="w-7 h-7 rounded-md bg-primary/10 flex items-center justify-center shrink-0">
+                        <Icon className="w-3.5 h-3.5 text-primary" />
+                      </div>
+                      {label}
+                    </div>
+                  ))}
+                </div>
+                <Separator className="my-4" />
+                <p className="text-xs text-muted-foreground">{COMPANY.fullAddress}</p>
+                <p className="text-xs text-muted-foreground mt-0.5">{COMPANY.phoneDisplay} · {COMPANY.email}</p>
               </div>
             </div>
           </FadeIn>
         </div>
+
+        {/* Back link */}
+        <FadeIn delay={0.15}>
+          <div className="mt-16 pt-8 border-t border-border">
+            <Link
+              href="/products"
+              className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back to Products
+            </Link>
+          </div>
+        </FadeIn>
       </div>
     </div>
   );

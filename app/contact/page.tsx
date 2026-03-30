@@ -85,18 +85,22 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="rounded-xl border border-primary/20 bg-primary/5 p-6 space-y-3">
-                <h3 className="font-semibold text-sm text-foreground">Need it fast?</h3>
-                <p className="text-xs text-muted-foreground">
-                  For urgent equipment needs, rental pickups, or same-day service — call us directly.
+              <div className="rounded-xl border border-primary/30 bg-primary/10 p-6 space-y-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                  <h3 className="font-semibold text-foreground">Need it fast?</h3>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  For urgent equipment needs, same-day rental pickups, or emergency service — call us directly. We pick up during business hours.
                 </p>
                 <a
                   href={COMPANY.telHref}
-                  className="flex items-center gap-2 text-sm font-semibold text-primary hover:opacity-80 transition-opacity"
+                  className="flex items-center justify-center gap-2 w-full rounded-lg bg-primary text-primary-foreground py-3 text-sm font-semibold hover:bg-primary/90 transition-colors"
                 >
                   <Phone className="w-4 h-4" />
                   {COMPANY.phoneDisplay}
                 </a>
+                <p className="text-xs text-center text-muted-foreground">Mon–Fri 8am–5pm · Emergency inquiries welcome</p>
               </div>
             </div>
           </FadeIn>

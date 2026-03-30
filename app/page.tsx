@@ -4,7 +4,7 @@ import Link from "next/link";
 import {
   ChevronRight, Phone, Mail, MapPin, Star, Wrench,
   Truck, Settings, Package, ArrowRight, ShieldCheck,
-  Clock, Users, Zap
+  Clock, Users, Zap, TrendingUp
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -140,6 +140,27 @@ export default function HomePage() {
               </div>
             </FadeIn>
           </div>
+        </div>
+      </section>
+
+      {/* ── Stats Strip ───────────────────────────────────────── */}
+      <section className="border-y border-border bg-card py-8">
+        <div className="container mx-auto px-4">
+          <FadeInGroup className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x divide-border">
+            {[
+              { value: "500+", label: "Equipment Models" },
+              { value: "6", label: "Equipment Categories" },
+              { value: "12+", label: "Cities Served" },
+              { value: "Same Day", label: "Service Response" },
+            ].map((stat) => (
+              <FadeInItem key={stat.label}>
+                <div className="text-center md:px-8">
+                  <p className="text-2xl md:text-3xl font-bold text-primary">{stat.value}</p>
+                  <p className="text-xs text-muted-foreground mt-1 uppercase tracking-wider">{stat.label}</p>
+                </div>
+              </FadeInItem>
+            ))}
+          </FadeInGroup>
         </div>
       </section>
 
@@ -343,7 +364,7 @@ export default function HomePage() {
                     <item.icon className="w-5 h-5 text-primary" />
                   </div>
                   <h3 className="font-semibold text-sm text-foreground">{item.title}</h3>
-                  <p className="mt-2 text-xs text-muted-foreground leading-relaxed">{item.body}</p>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{item.body}</p>
                 </div>
               </FadeInItem>
             ))}
@@ -352,36 +373,55 @@ export default function HomePage() {
       </section>
 
       {/* ── Contact CTA ───────────────────────────────────────── */}
-      <section className="py-20">
+      <section className="py-24 bg-primary/5 border-t border-primary/10">
         <div className="container mx-auto px-4">
           <FadeIn>
-            <div className="rounded-xl bg-primary/5 border border-primary/20 p-8 md:p-12 text-center max-w-2xl mx-auto">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground">Ready to Get Started?</h2>
-              <p className="mt-3 text-muted-foreground">
-                Call us, email, or submit a quote request. We respond same-day to all equipment inquiries.
+            <div className="max-w-3xl mx-auto text-center">
+              <Badge variant="secondary" className="mb-4 text-xs uppercase tracking-widest">
+                Get in Touch
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+                Ready to Get Started?
+              </h2>
+              <p className="mt-4 text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
+                Call us, email, or submit a quote request. We respond same-day to all equipment inquiries — sales, rentals, and service.
               </p>
-              <div className="mt-8 flex flex-wrap justify-center gap-3">
-                <Button asChild size="lg">
+              <div className="mt-10 flex flex-wrap justify-center gap-3">
+                <Button asChild size="lg" className="text-base px-8">
                   <Link href="/contact">Request a Quote</Link>
                 </Button>
-                <Button asChild size="lg" variant="outline">
+                <Button asChild size="lg" variant="outline" className="text-base px-8">
                   <a href={COMPANY.telHref}>
                     <Phone className="mr-2 w-4 h-4" />
                     {COMPANY.phoneDisplay}
                   </a>
                 </Button>
-                <Button asChild size="lg" variant="ghost">
+                <Button asChild size="lg" variant="ghost" className="text-base">
                   <a href={COMPANY.mailtoHref}>
                     <Mail className="mr-2 w-4 h-4" />
                     Email Us
                   </a>
                 </Button>
               </div>
-              <Separator className="my-8 opacity-30" />
-              <p className="text-sm text-muted-foreground flex items-center justify-center gap-2">
-                <MapPin className="w-4 h-4 text-primary" />
-                {COMPANY.fullAddress}
-              </p>
+            </div>
+          </FadeIn>
+          <FadeIn delay={0.15}>
+            <div className="mt-16 grid sm:grid-cols-3 gap-6 max-w-2xl mx-auto text-center">
+              <div>
+                <p className="text-sm font-medium text-foreground">Mon–Fri 8am–5pm</p>
+                <p className="text-xs text-muted-foreground mt-0.5">Business Hours</p>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-foreground">{COMPANY.phoneDisplay}</p>
+                <p className="text-xs text-muted-foreground mt-0.5">Direct Line</p>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-foreground flex items-center justify-center gap-1">
+                  <MapPin className="w-3.5 h-3.5 text-primary" />
+                  Concord, NC
+                </p>
+                <p className="text-xs text-muted-foreground mt-0.5">Charlotte Metro</p>
+              </div>
             </div>
           </FadeIn>
         </div>

@@ -99,9 +99,12 @@ export default function ServiceRepairPage() {
           <FadeIn delay={0.1}>
             <div>
               <h2 className="text-2xl font-bold text-foreground mb-6">Brands Serviced</h2>
-              <div className="flex flex-wrap gap-2">
+              <div className="grid grid-cols-2 gap-2">
                 {BRANDS_SERVICED.map((b) => (
-                  <Badge key={b} variant="secondary" className="text-xs">{b}</Badge>
+                  <div key={b} className="flex items-center gap-2.5 py-2.5 px-3 rounded-lg border border-border bg-card text-sm text-foreground">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                    {b}
+                  </div>
                 ))}
               </div>
               <p className="mt-4 text-sm text-muted-foreground">
@@ -113,21 +116,37 @@ export default function ServiceRepairPage() {
 
         {/* CTA */}
         <FadeIn>
-          <div className="rounded-xl border border-primary/20 bg-primary/5 p-8 text-center max-w-xl mx-auto">
-            <h2 className="text-xl font-bold text-foreground">Schedule Service</h2>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Contact us to schedule a diagnostic, on-site visit, or drop-off repair. We respond same-day to service requests.
-            </p>
-            <div className="mt-5 flex flex-col sm:flex-row gap-3 justify-center">
-              <Button asChild>
-                <Link href="/contact?type=service">Request Service</Link>
-              </Button>
-              <Button asChild variant="outline">
-                <a href={COMPANY.telHref}>
-                  <Phone className="mr-2 w-4 h-4" />
-                  {COMPANY.phoneDisplay}
-                </a>
-              </Button>
+          <div className="rounded-xl border border-primary/20 bg-primary/5 p-8 md:p-12">
+            <div className="max-w-2xl mx-auto text-center">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">Schedule Service</h2>
+              <p className="mt-3 text-muted-foreground leading-relaxed">
+                Contact us to schedule a diagnostic, on-site visit, or drop-off repair. We respond same-day to service requests and provide a written estimate before any work begins.
+              </p>
+              <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+                <Button asChild size="lg" className="px-8">
+                  <Link href="/contact?type=service">Request Service</Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="px-8">
+                  <a href={COMPANY.telHref}>
+                    <Phone className="mr-2 w-4 h-4" />
+                    {COMPANY.phoneDisplay}
+                  </a>
+                </Button>
+              </div>
+            </div>
+            <div className="mt-10 pt-8 border-t border-border grid sm:grid-cols-3 gap-6 text-center max-w-2xl mx-auto">
+              <div>
+                <p className="text-sm font-semibold text-foreground">Written Estimate</p>
+                <p className="text-xs text-muted-foreground mt-1">Before any work begins</p>
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-foreground">OEM Parts Stocked</p>
+                <p className="text-xs text-muted-foreground mt-1">Common brands ready</p>
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-foreground">On-Site Available</p>
+                <p className="text-xs text-muted-foreground mt-1">Charlotte metro area</p>
+              </div>
             </div>
           </div>
         </FadeIn>

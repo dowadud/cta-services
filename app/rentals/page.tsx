@@ -133,6 +133,39 @@ export default function RentalsPage() {
           ))}
         </FadeInGroup>
 
+        {/* Pricing context */}
+        <FadeIn>
+          <div className="rounded-xl border border-primary/20 bg-primary/5 p-6 md:p-8 mb-8">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div>
+                <h2 className="text-lg font-bold text-foreground">Rental Pricing</h2>
+                <p className="mt-1 text-sm text-muted-foreground max-w-lg">
+                  Rates vary by equipment type, rental period, and delivery location. Call or submit a quote request for exact pricing — we respond same-day.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3 shrink-0">
+                <Button asChild size="lg">
+                  <Link href="/contact?type=rental">Get a Quote <ArrowRight className="ml-2 w-4 h-4" /></Link>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                  <a href={COMPANY.telHref}>
+                    <Phone className="mr-2 w-4 h-4" />
+                    {COMPANY.phoneDisplay}
+                  </a>
+                </Button>
+              </div>
+            </div>
+            <div className="mt-6 pt-6 border-t border-border grid grid-cols-3 gap-4 text-center">
+              {["Day Rate", "Week Rate", "Month Rate"].map((term) => (
+                <div key={term}>
+                  <p className="text-sm font-semibold text-foreground">{term}</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">Call for pricing</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </FadeIn>
+
         {/* Rental terms */}
         <FadeIn>
           <div className="rounded-xl border border-border bg-secondary/20 p-8 md:p-12">
@@ -150,7 +183,7 @@ export default function RentalsPage() {
                 <p className="font-medium text-foreground">{COMPANY.legalName}</p>
                 <p className="text-sm text-muted-foreground">{COMPANY.fullAddress} · {COMPANY.phoneDisplay}</p>
               </div>
-              <Button asChild>
+              <Button asChild size="lg">
                 <Link href="/contact?type=rental">Request Rental Quote</Link>
               </Button>
             </div>

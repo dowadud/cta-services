@@ -4,7 +4,7 @@ import { Phone, MapPin, Mail, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { FadeIn } from "@/components/motion";
+import { FadeIn, FadeInGroup, FadeInItem } from "@/components/motion";
 import { COMPANY } from "@/lib/company";
 
 export const metadata: Metadata = {
@@ -33,6 +33,23 @@ export default function AboutPage() {
             </p>
           </div>
         </FadeIn>
+
+        {/* Stats */}
+        <FadeInGroup className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-16">
+          {[
+            { value: "500+", label: "Equipment Models" },
+            { value: "6", label: "Categories" },
+            { value: "12+", label: "Cities Served" },
+            { value: "Same Day", label: "Response Time" },
+          ].map((s) => (
+            <FadeInItem key={s.label}>
+              <div className="rounded-lg border border-border bg-card p-5 text-center">
+                <p className="text-2xl font-bold text-primary">{s.value}</p>
+                <p className="text-xs text-muted-foreground mt-1 uppercase tracking-wider">{s.label}</p>
+              </div>
+            </FadeInItem>
+          ))}
+        </FadeInGroup>
 
         <div className="grid lg:grid-cols-2 gap-16 mb-20">
           {/* Story */}
