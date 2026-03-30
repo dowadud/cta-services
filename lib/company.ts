@@ -4,12 +4,12 @@ export const COMPANY = {
   get phoneDisplay() {
     return "704-458-7691";
   },
-  email: "ctaservices@outlook.com",
+  email: "support@thectaservices.com",
   addressLine1: "1480 Concord Pkwy North",
   cityStateZip: "Concord, NC 28025",
   fullAddress: "1480 Concord Pkwy North, Concord, NC 28025",
   telHref: "tel:+17044587691",
-  mailtoHref: "mailto:ctaservices@outlook.com",
+  mailtoHref: "mailto:support@thectaservices.com",
 } as const;
 
 export const SITE = {
