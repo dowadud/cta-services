@@ -105,18 +105,6 @@ const localBusinessSchema = {
     { "@type": "AdministrativeArea", name: "Rowan County" },
     { "@type": "State", name: "North Carolina" },
   ],
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Floor Equipment Catalog",
-    itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Floor Scrubbers" } },
-      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Concrete Grinders" } },
-      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Shot Blasters" } },
-      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Power Trowels" } },
-      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Concrete Scarifiers" } },
-      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Floor Equipment Parts" } },
-    ],
-  },
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",

@@ -81,45 +81,8 @@ export default async function ProductDetailPage({
     ],
   };
 
-  const productSchema = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: product.name,
-    description: product.shortDescription,
-    category: product.category,
-    image: product.images.map((img) => `https://thectaservices.com${img.src}`),
-    brand: {
-      "@type": "Brand",
-      name: product.name.split(" ")[0],
-    },
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "USD",
-      price: product.price?.amount ?? undefined,
-      priceValidUntil: new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split("T")[0],
-      availability: "https://schema.org/InStock",
-      url: `https://thectaservices.com/products/${slug}`,
-      seller: {
-        "@type": "LocalBusiness",
-        name: "CTA Services LLC",
-        telephone: "704-458-7691",
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "Concord",
-          addressRegion: "NC",
-          postalCode: "28025",
-          addressCountry: "US",
-        },
-      },
-    },
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
