@@ -16,7 +16,7 @@ const CAPABILITIES = [
   { icon: Settings, title: "Diagnostic & Repair", body: "We diagnose mechanical, electrical, and hydraulic issues across major floor equipment brands. Clear estimate before we begin any work." },
   { icon: Wrench, title: "Preventive Maintenance", body: "Scheduled PM programs extend machine life and reduce unplanned downtime. We document each service with a written record for your fleet." },
   { icon: Package, title: "OEM Parts", body: "We stock common wear parts for the brands we service — brushes, squeegees, blades, batteries, motors, and more." },
-  { icon: Clock, title: "Fast Turnaround", body: "We understand production schedules. We prioritize repair timing and offer loaner or rental equipment when a longer service is needed." },
+  { icon: Clock, title: "Fast Turnaround", body: "We understand production schedules. We prioritize repair timing to minimize downtime and get your equipment back in service quickly." },
 ];
 
 const BRANDS_SERVICED = [

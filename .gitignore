@@ -13,6 +13,7 @@ node_modules/
 
 # System
 .DS_Store
+**/.DS_Store
 Thumbs.db
 *.log
 
@@ -21,3 +22,27 @@ data/raw/
 
 # Type declarations (auto-generated)
 next-env.d.ts
+
+# AI assistant scratch files
+.claude/
+.firecrawl/
+CLAUDE.md
+docs/
+
+# TypeScript incremental build info
+*.tsbuildinfo
+
+# Stray image downloads at root (duplicates of public/product-images/)
+*.jpg
+*.jpeg
+*.webp
+*.PNG
+*.png
+*.gif
+!public/**
+!app/**
+!components/**
+
+# HTML test files
+index.html
+test_images.html

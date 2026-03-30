@@ -25,9 +25,32 @@ export async function generateMetadata({
   const { slug } = await params;
   const product = getProductBySlug(slug);
   if (!product) return { title: "Product Not Found" };
+
+  const priceStr = product.price ? ` — ${product.price.display}` : "";
+  const title = `${product.name}${priceStr} | CTA Services LLC`;
+  const description = `${product.shortDescription} Available from CTA Services LLC in Concord, NC. Call 704-458-7691 for pricing and availability.`;
+  const canonicalUrl = `https://ctaservicesnc.com/products/${slug}`;
+  const imageUrl = product.images[0]?.src
+    ? `https://ctaservicesnc.com${product.images[0].src}`
+    : "https://ctaservicesnc.com/og-image.png";
+
   return {
-    title: `${product.name} — ${product.category}`,
-    description: product.shortDescription,
+    title,
+    description,
+    alternates: { canonical: canonicalUrl },
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      type: "website",
+      images: [{ url: imageUrl, width: 800, height: 600, alt: product.name }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [imageUrl],
+    },
   };
 }
 
@@ -48,7 +71,45 @@ export default async function ProductDetailPage({
 
   const categoryShort = product.category.split(" · ")[0];
 
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.shortDescription,
+    category: product.category,
+    image: product.images.map((img) => `https://ctaservicesnc.com${img.src}`),
+    brand: {
+      "@type": "Brand",
+      name: product.name.split(" ")[0],
+    },
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "USD",
+      price: product.price?.amount ?? undefined,
+      priceValidUntil: new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split("T")[0],
+      availability: "https://schema.org/InStock",
+      url: `https://ctaservicesnc.com/products/${slug}`,
+      seller: {
+        "@type": "LocalBusiness",
+        name: "CTA Services LLC",
+        telephone: "704-458-7691",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Concord",
+          addressRegion: "NC",
+          postalCode: "28025",
+          addressCountry: "US",
+        },
+      },
+    },
+  };
+
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
     <div className="pt-28 pb-20">
       <div className="container mx-auto px-4">
 
@@ -227,5 +288,6 @@ export default async function ProductDetailPage({
         </FadeIn>
       </div>
     </div>
+    </>
   );
 }

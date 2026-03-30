@@ -66,7 +66,7 @@ export default function AboutPage() {
                 Our inventory covers the full range of commercial and industrial floor equipment — from daily-maintenance auto scrubbers to large-format shot blasters, ride-on scrapers, planetary grinders, and concrete power trowels. For every product we sell, we offer the parts and service to back it up.
               </p>
               <p>
-                We serve the Concord–Charlotte corridor and surrounding counties, and we offer delivery and on-site service for most of our rental and repair work.
+                We serve the Concord–Charlotte corridor and surrounding counties, and we offer delivery and on-site service throughout the region.
               </p>
             </div>
           </FadeIn>
@@ -78,7 +78,6 @@ export default function AboutPage() {
               <div className="space-y-4">
                 {[
                   { title: "Equipment Sales", body: "We sell a wide range of new and professionally sourced floor equipment — from entry-level walk-behind machines to production-scale ride-on units." },
-                  { title: "Rentals", body: "Day, week, and month rentals with delivery, operator orientation, and on-call support during the rental period." },
                   { title: "Service & Repair", body: "Certified technicians diagnose and repair floor scrubbers, grinders, scarifiers, shot blasters, and concrete finishing equipment." },
                   { title: "Parts & Consumables", body: "We stock and source brushes, pads, blades, batteries, and wear parts for the major brands we support." },
                 ].map((item) => (

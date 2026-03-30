@@ -11,11 +11,12 @@ import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { ProductCard } from "@/components/product-card";
 import { FadeIn, FadeInGroup, FadeInItem } from "@/components/motion";
+import { AnimatedText } from "@/components/ui/animated-underline-text";
 import { COMPANY } from "@/lib/company";
 import { getFeaturedProducts } from "@/lib/products";
 
 export const metadata: Metadata = {
-  title: "CTA Services LLC — Flooring Equipment Sales, Rentals & Service | Concord, NC",
+  title: "CTA Services LLC — Flooring Equipment Sales & Service | Concord, NC",
   description:
     "Buy, rent, or service professional flooring equipment in Concord, NC. Shot blasters, floor grinders, scarifiers, auto scrubbers, power trowels and more. Serving Charlotte metro.",
   alternates: { canonical: "/" },
@@ -39,12 +40,12 @@ const WHY_CTA = [
   {
     icon: Clock,
     title: "Responsive Support",
-    body: "We understand that downtime costs money. Our team responds quickly to service calls and keeps rentals moving so your production schedule stays on track.",
+    body: "We understand that downtime costs money. Our team responds quickly to service calls so your production schedule stays on track.",
   },
   {
     icon: Users,
     title: "B2B Relationships",
-    body: "We work directly with contractors, facility managers, and floor prep crews — with account pricing, fleet planning, and flexible rental terms.",
+    body: "We work directly with contractors, facility managers, and floor prep crews — with account pricing, fleet planning, and dedicated service support.",
   },
   {
     icon: Package,
@@ -58,109 +59,77 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col">
-      {/* ── Hero ──────────────────────────────────────────────── */}
-      <section className="relative min-h-[92vh] flex items-center pt-24 pb-20 overflow-hidden">
-        {/* Background image */}
-        <Image
-          src="/site-images/hero-bg.png"
-          alt=""
-          fill
-          priority
-          className="object-cover object-center"
-          sizes="100vw"
-        />
-        {/* Dark overlay so text is readable */}
-        <div className="absolute inset-0 bg-background/80" />
-        {/* Subtle grid texture on top */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage:
-              "linear-gradient(hsl(var(--border)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px)",
-            backgroundSize: "48px 48px",
-          }}
-        />
-        {/* Radial glow */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[500px] rounded-full bg-primary/10 blur-[120px] pointer-events-none" />
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl">
-            <FadeIn delay={0}>
-              <Badge variant="secondary" className="mb-6 px-3 py-1 text-xs uppercase tracking-widest">
-                Concord, NC · Charlotte Metro
-              </Badge>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-foreground">
-                Professional Floor Equipment
-                <span className="block text-primary mt-2">Sales · Rentals · Service</span>
-              </h1>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <p className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed">
-                CTA Services LLC supplies, rents, and maintains industrial floor equipment for contractors, facility managers, and floor prep crews across the Carolinas.
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.3}>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Button asChild size="lg" className="text-base px-6">
-                  <Link href="/products">
-                    Browse Equipment
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Link>
-                </Button>
-                <Button asChild size="lg" variant="outline" className="text-base px-6 border-primary/40">
-                  <a href={COMPANY.telHref}>
-                    <Phone className="mr-2 w-4 h-4" />
-                    {COMPANY.phoneDisplay}
-                  </a>
-                </Button>
-                <Button asChild size="lg" variant="ghost" className="text-base px-6">
-                  <Link href="/contact">Request Quote</Link>
-                </Button>
-              </div>
-            </FadeIn>
-
-            {/* Trust badges */}
-            <FadeIn delay={0.45}>
-              <div className="mt-12 flex flex-wrap gap-6 text-sm text-muted-foreground">
-                {[
-                  "Shot Blasters",
-                  "Floor Grinders",
-                  "Auto Scrubbers",
-                  "Power Trowels",
-                  "Scarifiers",
-                  "Parts & Service",
-                ].map((cat) => (
-                  <span key={cat} className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    {cat}
-                  </span>
-                ))}
-              </div>
-            </FadeIn>
-          </div>
+      {/* ── Hero (FloorEquipmentHero) ─────────────────────────── */}
+      <section className="relative w-full min-h-screen overflow-hidden bg-[#0a1628] pt-24 flex items-center">
+        {/* Dot grid background */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: "radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)",
+            backgroundSize: "40px 40px",
+          }} />
         </div>
-      </section>
+        {/* Orange gradient accents */}
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-orange-600/10 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-orange-500/5 to-transparent pointer-events-none" />
 
-      {/* ── Stats Strip ───────────────────────────────────────── */}
-      <section className="border-y border-border bg-card py-8">
-        <div className="container mx-auto px-4">
-          <FadeInGroup className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x divide-border">
-            {[
-              { value: "500+", label: "Equipment Models" },
-              { value: "6", label: "Equipment Categories" },
-              { value: "12+", label: "Cities Served" },
-              { value: "Same Day", label: "Service Response" },
-            ].map((stat) => (
-              <FadeInItem key={stat.label}>
-                <div className="text-center md:px-8">
-                  <p className="text-2xl md:text-3xl font-bold text-primary">{stat.value}</p>
-                  <p className="text-xs text-muted-foreground mt-1 uppercase tracking-wider">{stat.label}</p>
+        <div className="relative z-10 container mx-auto px-4 py-20 min-h-screen flex items-center w-full">
+          <div className="w-full max-w-3xl">
+
+            {/* Hero content */}
+            <FadeInGroup className="flex flex-col space-y-8">
+              <FadeInItem>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 border border-orange-500/20 backdrop-blur-sm">
+                  <Wrench className="h-4 w-4 text-orange-400" />
+                  <span className="text-sm font-medium text-orange-300">Concord, NC · Charlotte Metro</span>
                 </div>
               </FadeInItem>
-            ))}
-          </FadeInGroup>
+
+              <FadeInItem>
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight">
+                  Professional<br />Floor Equipment
+                  <span className="block text-orange-400 mt-2">Sales · Service · Parts</span>
+                </h1>
+              </FadeInItem>
+
+              <FadeInItem>
+                <p className="text-lg sm:text-xl text-white/70 max-w-xl leading-relaxed">
+                  CTA Services LLC supplies, rents, and maintains industrial floor equipment
+                  for contractors and facility crews across the Carolinas.
+                </p>
+              </FadeInItem>
+
+              <FadeInItem>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button asChild size="lg" className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 text-base shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 hover:scale-105 transition-all">
+                    <Link href="/products">
+                      Browse Equipment
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                  </Button>
+                  <Button asChild size="lg" variant="outline" className="border-2 border-orange-400/30 bg-transparent hover:bg-orange-500/10 text-white font-semibold px-8 text-base hover:border-orange-400/50">
+                    <a href={COMPANY.telHref}>
+                      <Phone className="mr-2 h-5 w-5" />
+                      {COMPANY.phoneDisplay}
+                    </a>
+                  </Button>
+                </div>
+              </FadeInItem>
+
+              <FadeInItem>
+                <div className="flex flex-wrap items-center gap-6 text-white/60 text-sm">
+                  {["Same-Day Service", "Charlotte Metro Delivery", "Certified Technicians"].map((item) => (
+                    <div key={item} className="flex items-center gap-2">
+                      <div className="w-7 h-7 rounded-full bg-orange-500/20 flex items-center justify-center">
+                        <span className="text-orange-400 font-bold text-xs">✓</span>
+                      </div>
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </FadeInItem>
+            </FadeInGroup>
+
+          </div>
         </div>
       </section>
 
@@ -210,10 +179,15 @@ export default function HomePage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <FadeIn>
-            <div className="mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div className="mb-14 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div>
-                <h2 className="text-3xl font-bold text-foreground">Featured Equipment</h2>
-                <p className="mt-2 text-muted-foreground">Current inventory available for sale, rental, or service.</p>
+                <AnimatedText
+                  text="Featured Equipment"
+                  textClassName="text-3xl font-bold text-foreground text-left"
+                  underlineClassName="text-primary"
+                  className="items-start pb-6"
+                />
+                <p className="mt-6 text-muted-foreground">Current inventory available for sale or service.</p>
               </div>
               <Button asChild variant="outline" size="sm">
                 <Link href="/products">
@@ -232,49 +206,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Rentals CTA ───────────────────────────────────────── */}
-      <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
-          <div className="rounded-xl border border-primary/30 bg-card p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
-            <div className="flex-1">
-              <FadeIn>
-                <Badge variant="secondary" className="mb-3 text-xs uppercase tracking-widest">Flexible Rental Terms</Badge>
-              </FadeIn>
-              <FadeIn delay={0.1}>
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-                  Rent Instead of Buy
-                </h2>
-                <p className="mt-3 text-muted-foreground leading-relaxed max-w-lg">
-                  Daily, weekly, and monthly rental programs available for most equipment in our catalog. Includes pre-delivery inspection, operator orientation, and on-call support.
-                </p>
-              </FadeIn>
-              <FadeIn delay={0.2}>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <Button asChild>
-                    <Link href="/rentals">Rental Programs <ArrowRight className="ml-2 w-4 h-4" /></Link>
-                  </Button>
-                  <Button asChild variant="outline">
-                    <Link href="/contact?type=quote">Get Rental Quote</Link>
-                  </Button>
-                </div>
-              </FadeIn>
-            </div>
-            <div className="shrink-0 w-full md:w-64">
-              <div className="rounded-lg bg-secondary/60 p-6 space-y-3 text-sm">
-                {["Day", "Week", "Month"].map((term) => (
-                  <div key={term} className="flex items-center justify-between py-2 border-b border-border last:border-0">
-                    <span className="text-muted-foreground">{term} Rental</span>
-                    <Badge variant="outline">Available</Badge>
-                  </div>
-                ))}
-                <div className="pt-1 text-xs text-muted-foreground">
-                  Delivery available across the Charlotte metro. Operator orientation included.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ── Service & Repair ──────────────────────────────────── */}
       <section className="py-20">
@@ -384,7 +315,7 @@ export default function HomePage() {
                 Ready to Get Started?
               </h2>
               <p className="mt-4 text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
-                Call us, email, or submit a quote request. We respond same-day to all equipment inquiries — sales, rentals, and service.
+                Call us, email, or submit a quote request. We respond same-day to all equipment inquiries — sales, parts, and service.
               </p>
               <div className="mt-10 flex flex-wrap justify-center gap-3">
                 <Button asChild size="lg" className="text-base px-8">

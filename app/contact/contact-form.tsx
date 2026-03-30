@@ -14,7 +14,6 @@ const INITIAL_STATE: ContactFormState = { success: false, message: "" };
 const TYPE_LABELS: Record<string, string> = {
   contact: "General Inquiry",
   quote: "Request a Quote",
-  rental: "Rental Inquiry",
   service: "Schedule Service",
   parts: "Parts Inquiry",
 };

@@ -5,7 +5,6 @@ import { Separator } from "@/components/ui/separator";
 
 const SERVICES = [
   { href: "/products", label: "Equipment Sales" },
-  { href: "/rentals", label: "Rentals" },
   { href: "/service-repair", label: "Service & Repair" },
   { href: "/parts", label: "Parts" },
 ];
@@ -43,7 +42,7 @@ export function SiteFooter() {
               </div>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Professional flooring equipment sales, rentals, parts, and certified service in Concord, NC and the greater Charlotte metro.
+              Professional flooring equipment sales, parts, and certified service in Concord, NC and the greater Charlotte metro.
             </p>
             <div className="space-y-2 text-sm">
               <a
@@ -136,7 +135,7 @@ export function SiteFooter() {
           &copy; {new Date().getFullYear()} {COMPANY.legalName}. All rights reserved.
         </p>
         <p className="text-xs text-muted-foreground">
-          Flooring equipment sales, rentals & service — Concord, NC 28025
+          Flooring equipment sales & service — Concord, NC 28025
         </p>
       </div>
     </footer>

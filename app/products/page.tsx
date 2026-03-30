@@ -9,9 +9,15 @@ import { FadeIn, FadeInGroup, FadeInItem } from "@/components/motion";
 import { getAllProducts, getCategories } from "@/lib/products";
 
 export const metadata: Metadata = {
-  title: "Flooring Equipment Catalog — Sales, Rentals & Parts",
+  title: "Floor Equipment Catalog — Sales & Parts | Concord, NC",
   description:
-    "Browse CTA Services' full catalog of floor scrubbers, grinders, shot blasters, scarifiers, power trowels, and more. Sales, rentals, and parts available in Concord, NC.",
+    "Browse CTA Services' full catalog of floor scrubbers, concrete grinders, shot blasters, scarifiers, power trowels, auto scrubbers, and more. Sales and parts in Concord, NC.",
+  alternates: { canonical: "https://ctaservicesnc.com/products" },
+  openGraph: {
+    title: "Floor Equipment Catalog | CTA Services LLC — Concord, NC",
+    description: "500+ floor equipment models available for sale in Concord, NC. Scrubbers, grinders, shot blasters, trowels, scarifiers, and replacement parts.",
+    url: "https://ctaservicesnc.com/products",
+  },
 };
 
 export default async function ProductsPage({
@@ -26,7 +32,11 @@ export default async function ProductsPage({
   const all = getAllProducts();
   const categories = getCategories();
 
-  const filtered = all.filter((p) => {
+  // Split: products with images go in the main grid; placeholders go in misc list
+  const withImages = all.filter((p) => p.imageStatus === "matched");
+  const noImages   = all.filter((p) => p.imageStatus === "placeholder");
+
+  const filtered = withImages.filter((p) => {
     const matchCat = activeCategory
       ? p.category.toLowerCase().includes(activeCategory.toLowerCase())
       : true;
@@ -34,6 +44,18 @@ export default async function ProductsPage({
       ? p.name.toLowerCase().includes(query) ||
         p.category.toLowerCase().includes(query) ||
         p.shortDescription.toLowerCase().includes(query)
+      : true;
+    return matchCat && matchQ;
+  });
+
+  // Also filter the misc list when a search query is active
+  const filteredMisc = noImages.filter((p) => {
+    const matchCat = activeCategory
+      ? p.category.toLowerCase().includes(activeCategory.toLowerCase())
+      : true;
+    const matchQ = query
+      ? p.name.toLowerCase().includes(query) ||
+        p.category.toLowerCase().includes(query)
       : true;
     return matchCat && matchQ;
   });
@@ -46,7 +68,7 @@ export default async function ProductsPage({
           <div className="mb-10">
             <h1 className="text-3xl md:text-4xl font-bold text-foreground">Equipment Catalog</h1>
             <p className="mt-2 text-muted-foreground">
-              {filtered.length.toLocaleString()} items across {categories.length} categories — available for sale, rental, or service.
+              {withImages.length.toLocaleString()} featured items · {noImages.length.toLocaleString()} additional parts &amp; accessories — available for sale, rental, or service.
             </p>
           </div>
         </FadeIn>
@@ -111,15 +133,15 @@ export default async function ProductsPage({
           </div>
         </FadeIn>
 
-        {/* Grid */}
-        {filtered.length === 0 ? (
+        {/* Main product grid — with images only */}
+        {filtered.length === 0 && filteredMisc.length === 0 ? (
           <FadeIn>
             <div className="py-24 text-center text-muted-foreground">
               No products found for those filters.{" "}
               <Link href="/products" className="text-primary underline">Clear filters</Link>
             </div>
           </FadeIn>
-        ) : (
+        ) : filtered.length > 0 ? (
           <FadeInGroup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {filtered.slice(0, 120).map((p) => (
               <FadeInItem key={p.slug}>
@@ -127,7 +149,7 @@ export default async function ProductsPage({
               </FadeInItem>
             ))}
           </FadeInGroup>
-        )}
+        ) : null}
 
         {filtered.length > 120 && (
           <FadeIn delay={0.2}>
@@ -139,6 +161,37 @@ export default async function ProductsPage({
               <p className="text-xs text-muted-foreground">
                 Use the search bar or category filter to narrow your results, or call us to find a specific model.
               </p>
+            </div>
+          </FadeIn>
+        )}
+
+        {/* ── Miscellaneous Parts & Accessories ─────────────────── */}
+        {filteredMisc.length > 0 && (
+          <FadeIn delay={0.15}>
+            <div className="mt-16 border-t border-border pt-12">
+              <div className="mb-6">
+                <h2 className="text-2xl font-bold text-foreground">Miscellaneous Parts &amp; Accessories</h2>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {filteredMisc.length.toLocaleString()} additional items — contact us for availability and pricing details.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-0">
+                {filteredMisc.map((p) => (
+                  <Link
+                    key={p.slug}
+                    href={`/products/${p.slug}`}
+                    className="group flex items-center justify-between py-3 border-b border-border/50 hover:border-primary/40 transition-colors gap-4"
+                  >
+                    <span className="text-sm text-foreground group-hover:text-primary transition-colors leading-snug line-clamp-2">
+                      {p.name}
+                    </span>
+                    <span className="text-sm font-semibold text-primary whitespace-nowrap shrink-0">
+                      {p.price ? p.price.display : "Call for price"}
+                    </span>
+                  </Link>
+                ))}
+              </div>
             </div>
           </FadeIn>
         )}

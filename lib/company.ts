@@ -14,6 +14,6 @@ export const COMPANY = {
 
 export const SITE = {
   name: "CTA Services",
-  tagline: "Flooring equipment sales, rentals, and certified service",
-  url: "https://cta-services.example.com",
+  tagline: "Flooring equipment sales and certified service",
+  url: "https://ctaservicesnc.com",
 } as const;

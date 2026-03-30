@@ -9,7 +9,7 @@ import { ContactForm } from "./contact-form";
 export const metadata: Metadata = {
   title: "Contact & Quote Request — CTA Services LLC",
   description:
-    "Contact CTA Services LLC in Concord, NC for floor equipment sales, rentals, service, and parts. Request a quote online or call 704-458-7691.",
+    "Contact CTA Services LLC in Concord, NC for floor equipment sales, service, and parts. Request a quote online or call 704-458-7691.",
 };
 
 export default function ContactPage() {
@@ -21,7 +21,7 @@ export default function ContactPage() {
             <Badge variant="secondary" className="mb-3 text-xs uppercase tracking-widest">Contact & Quote</Badge>
             <h1 className="text-4xl font-bold text-foreground">Get in Touch</h1>
             <p className="mt-3 text-muted-foreground">
-              Use the form for equipment quotes, rental requests, service scheduling, or general inquiries. We respond same-day to all messages.
+              Use the form for equipment quotes, service scheduling, or general inquiries. We respond same-day to all messages.
             </p>
           </div>
         </FadeIn>
@@ -91,7 +91,7 @@ export default function ContactPage() {
                   <h3 className="font-semibold text-foreground">Need it fast?</h3>
                 </div>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  For urgent equipment needs, same-day rental pickups, or emergency service — call us directly. We pick up during business hours.
+                  For urgent equipment needs or emergency service — call us directly. We pick up during business hours.
                 </p>
                 <a
                   href={COMPANY.telHref}
