@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ChevronRight, Phone, Mail, MapPin, Star, Wrench,
@@ -59,9 +60,20 @@ export default function HomePage() {
     <div className="flex flex-col">
       {/* ── Hero ──────────────────────────────────────────────── */}
       <section className="relative min-h-[92vh] flex items-center pt-24 pb-20 overflow-hidden">
-        {/* Background grid pattern */}
+        {/* Background image */}
+        <Image
+          src="/site-images/hero-bg.png"
+          alt=""
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        {/* Dark overlay so text is readable */}
+        <div className="absolute inset-0 bg-background/80" />
+        {/* Subtle grid texture on top */}
         <div
-          className="absolute inset-0 opacity-[0.04]"
+          className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage:
               "linear-gradient(hsl(var(--border)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px)",
@@ -69,7 +81,7 @@ export default function HomePage() {
           }}
         />
         {/* Radial glow */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[500px] rounded-full bg-primary/8 blur-[120px] pointer-events-none" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[500px] rounded-full bg-primary/10 blur-[120px] pointer-events-none" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
@@ -246,8 +258,20 @@ export default function HomePage() {
       {/* ── Service & Repair ──────────────────────────────────── */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
             <FadeIn>
+              <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-secondary/40">
+                <Image
+                  src="/site-images/equipment-2.jpg"
+                  alt="Floor equipment service and repair"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-background/40 to-transparent" />
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.1}>
               <div>
                 <Badge variant="secondary" className="mb-3 text-xs uppercase tracking-widest">Certified Service</Badge>
                 <h2 className="text-3xl font-bold text-foreground">Service & Repair</h2>
@@ -279,23 +303,21 @@ export default function HomePage() {
                     </a>
                   </Button>
                 </div>
-              </div>
-            </FadeIn>
-            <FadeIn delay={0.15}>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { label: "Floor Scrubbers", sub: "Walk-behind & ride-on" },
-                  { label: "Floor Grinders", sub: "Single & planetary head" },
-                  { label: "Shot Blasters", sub: "Walk-behind & ride-on" },
-                  { label: "Concrete Scarifiers", sub: "Electric & gas models" },
-                  { label: "Power Trowels", sub: "Walk-behind & ride-on" },
-                  { label: "Floor Scrapers", sub: "Electric & battery" },
-                ].map((item) => (
-                  <div key={item.label} className="rounded-lg border border-border bg-card p-4">
-                    <p className="text-sm font-medium text-foreground">{item.label}</p>
-                    <p className="text-xs text-muted-foreground mt-0.5">{item.sub}</p>
-                  </div>
-                ))}
+                <div className="mt-8 grid grid-cols-2 gap-3">
+                  {[
+                    { label: "Floor Scrubbers", sub: "Walk-behind & ride-on" },
+                    { label: "Floor Grinders", sub: "Single & planetary head" },
+                    { label: "Shot Blasters", sub: "Walk-behind & ride-on" },
+                    { label: "Concrete Scarifiers", sub: "Electric & gas models" },
+                    { label: "Power Trowels", sub: "Walk-behind & ride-on" },
+                    { label: "Floor Scrapers", sub: "Electric & battery" },
+                  ].map((item) => (
+                    <div key={item.label} className="rounded-lg border border-border bg-card p-3">
+                      <p className="text-sm font-medium text-foreground">{item.label}</p>
+                      <p className="text-xs text-muted-foreground mt-0.5">{item.sub}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </FadeIn>
           </div>

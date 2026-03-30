@@ -116,7 +116,26 @@ export default async function ProductDetailPage({
                 )}
               </div>
 
-              <p className="text-muted-foreground leading-relaxed">{product.longDescription}</p>
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                {product.longDescription.split("\n\n").map((block, idx) => {
+                  const lines = block.split("\n");
+                  const firstLine = lines[0];
+                  const isHeader = /^[A-Z &/–-]{4,}$/.test(firstLine.trim());
+                  if (isHeader) {
+                    return (
+                      <div key={idx}>
+                        <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-1">
+                          {firstLine}
+                        </p>
+                        {lines.slice(1).join(" ") && (
+                          <p>{lines.slice(1).join(" ")}</p>
+                        )}
+                      </div>
+                    );
+                  }
+                  return <p key={idx}>{block}</p>;
+                })}
+              </div>
 
               {/* Specs accordion */}
               {Object.keys(product.specs).length > 0 && (
