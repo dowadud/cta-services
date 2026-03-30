@@ -4,7 +4,7 @@ Production Next.js website for **CTA Services LLC**, a professional flooring equ
 
 **Phone:** 704-458-7691  
 **Address:** 1480 Concord Pkwy North, Concord, NC 28025  
-**Email:** ctaservices@outlook.com
+**Email:** support@thectaservices.com
 
 ---
 
@@ -156,7 +156,7 @@ import { Resend } from "resend";
 const resend = new Resend(process.env.RESEND_API_KEY);
 await resend.emails.send({
   from: "CTA Services <noreply@ctaservicesnc.com>",
-  to: "ctaservices@outlook.com",
+  to: "support@thectaservices.com",
   subject: `[CTA] ${parsed.data.subject}`,
   text: JSON.stringify(parsed.data, null, 2),
 });
@@ -173,7 +173,7 @@ const transport = nodemailer.createTransport({
   port: 587,
   auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
 });
-await transport.sendMail({ from: ..., to: "ctaservices@outlook.com", ... });
+await transport.sendMail({ from: ..., to: "support@thectaservices.com", ... });
 ```
 
 Env vars: `SMTP_USER`, `SMTP_PASS`.

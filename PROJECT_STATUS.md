@@ -11,7 +11,7 @@ A production-ready Next.js website for:
 **CTA Services LLC**  
 - Phone: 704-458-7691  
 - Address: 1480 Concord Pkwy North, Concord, NC 28025  
-- Email: ctaservices@outlook.com  
+- Email: support@thectaservices.com  
 
 **Purpose:** Professional flooring equipment company website — sales, rentals, parts, and service.  
 **Inspired by layout/structure of:** https://www.thesweeper.com and https://www.diamondtoolstore.com  
