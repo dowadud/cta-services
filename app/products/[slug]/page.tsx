@@ -71,6 +71,16 @@ export default async function ProductDetailPage({
 
   const categoryShort = product.category.split(" · ")[0];
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://ctaservicesnc.com" },
+      { "@type": "ListItem", position: 2, name: "Equipment Catalog", item: "https://ctaservicesnc.com/products" },
+      { "@type": "ListItem", position: 3, name: product.name, item: `https://ctaservicesnc.com/products/${slug}` },
+    ],
+  };
+
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -109,6 +119,10 @@ export default async function ProductDetailPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
     <div className="pt-28 pb-20">
       <div className="container mx-auto px-4">

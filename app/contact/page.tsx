@@ -7,9 +7,15 @@ import { COMPANY } from "@/lib/company";
 import { ContactForm } from "./contact-form";
 
 export const metadata: Metadata = {
-  title: "Contact & Quote Request — CTA Services LLC",
+  title: "Contact & Quote Request — CTA Services LLC | Concord, NC",
   description:
-    "Contact CTA Services LLC in Concord, NC for floor equipment sales, service, and parts. Request a quote online or call 704-458-7691.",
+    "Contact CTA Services LLC in Concord, NC for floor equipment sales, service quotes, and parts inquiries. Call 704-458-7691 or submit a request online.",
+  alternates: { canonical: "https://ctaservicesnc.com/contact" },
+  openGraph: {
+    title: "Contact & Quote Request — CTA Services LLC | Concord, NC",
+    description: "Get in touch with CTA Services LLC for floor equipment sales, service, and parts in Concord, NC. Call 704-458-7691 or request a quote online.",
+    url: "https://ctaservicesnc.com/contact",
+  },
 };
 
 export default function ContactPage() {

@@ -59,11 +59,14 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: "https://ctaservicesnc.com" },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+  verification: {
+    google: "REPLACE_WITH_GOOGLE_SEARCH_CONSOLE_CODE",
+  },
 };
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": ["LocalBusiness", "AutoPartsStore"],
   "@id": "https://ctaservicesnc.com/#business",
   name: COMPANY.legalName,
   legalName: COMPANY.legalName,

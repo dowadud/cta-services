@@ -20,6 +20,15 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://ctaservicesnc.com" },
+    { "@type": "ListItem", position: 2, name: "Equipment Catalog", item: "https://ctaservicesnc.com/products" },
+  ],
+};
+
 export default async function ProductsPage({
   searchParams,
 }: {
@@ -62,13 +71,17 @@ export default async function ProductsPage({
 
   return (
     <div className="pt-28 pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="container mx-auto px-4">
         {/* Header */}
         <FadeIn>
           <div className="mb-10">
             <h1 className="text-3xl md:text-4xl font-bold text-foreground">Equipment Catalog</h1>
             <p className="mt-2 text-muted-foreground">
-              {withImages.length.toLocaleString()} featured items · {noImages.length.toLocaleString()} additional parts &amp; accessories — available for sale, rental, or service.
+              {withImages.length.toLocaleString()} featured items · {noImages.length.toLocaleString()} additional parts &amp; accessories — available for sale or service.
             </p>
           </div>
         </FadeIn>

@@ -7,9 +7,15 @@ import { FadeIn, FadeInGroup, FadeInItem } from "@/components/motion";
 import { COMPANY } from "@/lib/company";
 
 export const metadata: Metadata = {
-  title: "Floor Equipment Service & Repair — Concord NC",
+  title: "Floor Equipment Service & Repair — Concord NC | CTA Services LLC",
   description:
-    "CTA Services provides certified repair and preventive maintenance for floor scrubbers, grinders, shot blasters, scarifiers, and concrete finishing equipment in Concord, NC.",
+    "Certified repair and preventive maintenance for floor scrubbers, concrete grinders, shot blasters, scarifiers, and power trowels in Concord, NC. Fast turnaround, OEM parts. Call 704-458-7691.",
+  alternates: { canonical: "https://ctaservicesnc.com/service-repair" },
+  openGraph: {
+    title: "Floor Equipment Service & Repair — Concord NC | CTA Services LLC",
+    description: "Certified repair and preventive maintenance for floor scrubbers, concrete grinders, shot blasters, and more in Concord, NC. Fast turnaround, OEM parts.",
+    url: "https://ctaservicesnc.com/service-repair",
+  },
 };
 
 const CAPABILITIES = [

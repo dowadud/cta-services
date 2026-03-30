@@ -16,10 +16,16 @@ import { COMPANY } from "@/lib/company";
 import { getFeaturedProducts } from "@/lib/products";
 
 export const metadata: Metadata = {
-  title: "CTA Services LLC — Flooring Equipment Sales & Service | Concord, NC",
+  title: "CTA Services LLC — Floor Equipment Sales & Service | Concord, NC",
   description:
-    "Buy, rent, or service professional flooring equipment in Concord, NC. Shot blasters, floor grinders, scarifiers, auto scrubbers, power trowels and more. Serving Charlotte metro.",
-  alternates: { canonical: "/" },
+    "Buy or service professional floor equipment in Concord, NC. Shot blasters, concrete grinders, scarifiers, auto scrubbers, power trowels, and parts. Serving the Charlotte metro.",
+  alternates: { canonical: "https://ctaservicesnc.com" },
+  openGraph: {
+    title: "CTA Services LLC — Floor Equipment Sales & Service | Concord, NC",
+    description: "Buy or service professional floor equipment in Concord, NC. Shot blasters, concrete grinders, scarifiers, auto scrubbers, power trowels, and parts.",
+    url: "https://ctaservicesnc.com",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "CTA Services LLC — Floor Equipment Concord NC" }],
+  },
 };
 
 const EQUIPMENT_CATEGORIES = [
@@ -54,11 +60,70 @@ const WHY_CTA = [
   },
 ];
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Where is CTA Services LLC located?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "CTA Services LLC is located at 1480 Concord Pkwy North, Concord, NC 28025. We serve the greater Charlotte metro area including Kannapolis, Harrisburg, Huntersville, Mooresville, and surrounding communities.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What types of floor equipment does CTA Services sell?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "CTA Services sells a wide range of professional floor equipment including shot blasters, concrete grinders, floor scarifiers, auto scrubbers, ride-on floor scrapers, and power trowels from leading brands.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Does CTA Services repair floor equipment?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. CTA Services offers certified repair and preventive maintenance for floor scrubbers, concrete grinders, shot blasters, scarifiers, and power trowels. Our technicians are factory-trained and we stock OEM parts for fast turnaround.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Does CTA Services sell floor equipment parts?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. We supply OEM and compatible replacement parts including brushes, squeegee blades, batteries, filters, drive belts, and wear parts for floor scrubbers, grinders, and shot blasters.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What areas does CTA Services serve?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "CTA Services serves Concord, NC and the surrounding Charlotte metro area, including Charlotte, Kannapolis, Harrisburg, Huntersville, Mooresville, Salisbury, Monroe, Albemarle, and Rock Hill, SC.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How do I get a quote from CTA Services?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "You can request a quote by calling 704-458-7691, emailing support@thectaservices.com, or submitting the online form on our Contact page. We typically respond the same business day.",
+      },
+    },
+  ],
+};
+
 export default function HomePage() {
   const featured = getFeaturedProducts(6);
 
   return (
     <div className="flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* ── Hero (FloorEquipmentHero) ─────────────────────────── */}
       <section className="relative w-full min-h-screen overflow-hidden bg-[#0a1628] pt-24 flex items-center">
         {/* Dot grid background */}
