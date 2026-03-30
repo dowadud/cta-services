@@ -10,11 +10,11 @@ export const metadata: Metadata = {
   title: "Floor Equipment Service & Repair — Concord NC | CTA Services LLC",
   description:
     "Certified repair and preventive maintenance for floor scrubbers, concrete grinders, shot blasters, scarifiers, and power trowels in Concord, NC. Fast turnaround, OEM parts. Call 704-458-7691.",
-  alternates: { canonical: "https://ctaservicesnc.com/service-repair" },
+  alternates: { canonical: "https://thectaservices.com/service-repair" },
   openGraph: {
     title: "Floor Equipment Service & Repair — Concord NC | CTA Services LLC",
     description: "Certified repair and preventive maintenance for floor scrubbers, concrete grinders, shot blasters, and more in Concord, NC. Fast turnaround, OEM parts.",
-    url: "https://ctaservicesnc.com/service-repair",
+    url: "https://thectaservices.com/service-repair",
   },
 };
 

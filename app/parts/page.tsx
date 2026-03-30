@@ -10,11 +10,11 @@ export const metadata: Metadata = {
   title: "Floor Equipment Parts & Consumables — Concord NC | CTA Services LLC",
   description:
     "OEM and compatible replacement parts for floor scrubbers, concrete grinders, scarifiers, and shot blasters. Brushes, squeegee blades, batteries, filters, and drive parts. Concord, NC.",
-  alternates: { canonical: "https://ctaservicesnc.com/parts" },
+  alternates: { canonical: "https://thectaservices.com/parts" },
   openGraph: {
     title: "Floor Equipment Parts & Consumables — Concord NC | CTA Services LLC",
     description: "OEM and compatible parts for floor scrubbers, grinders, scarifiers, and shot blasters. Brushes, blades, batteries, and more. Serving Concord and Charlotte metro.",
-    url: "https://ctaservicesnc.com/parts",
+    url: "https://thectaservices.com/parts",
   },
 };
 

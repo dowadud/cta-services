@@ -9,7 +9,7 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ctaservicesnc.com"),
+  metadataBase: new URL("https://thectaservices.com"),
   title: {
     default: `${COMPANY.legalName} — Floor Equipment Sales & Service | Concord, NC`,
     template: `%s | CTA Services LLC — Concord, NC`,
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: SITE.name,
-    url: "https://ctaservicesnc.com",
+    url: "https://thectaservices.com",
     title: `${COMPANY.legalName} — Floor Equipment Sales & Service | Concord, NC`,
     description:
       "Professional floor equipment sales, parts, and certified service in Concord, NC. Serving the Charlotte metro — scrubbers, grinders, shot blasters, trowels, and more.",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     description: "Professional floor equipment sales, parts, and certified service in Concord, NC.",
     images: ["/og-image.png"],
   },
-  alternates: { canonical: "https://ctaservicesnc.com" },
+  alternates: { canonical: "https://thectaservices.com" },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
   verification: {
     google: "REPLACE_WITH_GOOGLE_SEARCH_CONSOLE_CODE",
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "AutoPartsStore"],
-  "@id": "https://ctaservicesnc.com/#business",
+  "@id": "https://thectaservices.com/#business",
   name: COMPANY.legalName,
   legalName: COMPANY.legalName,
   telephone: COMPANY.phoneDisplay,
@@ -85,9 +85,9 @@ const localBusinessSchema = {
     latitude: 35.4087,
     longitude: -80.5795,
   },
-  url: "https://ctaservicesnc.com",
-  logo: "https://ctaservicesnc.com/logo.png",
-  image: "https://ctaservicesnc.com/og-image.png",
+  url: "https://thectaservices.com",
+  logo: "https://thectaservices.com/logo.png",
+  image: "https://thectaservices.com/og-image.png",
   description:
     "CTA Services LLC sells and services professional floor equipment in Concord, NC. We supply floor scrubbers, concrete grinders, shot blasters, power trowels, scarifiers, and replacement parts to contractors and facility managers across the Charlotte metro.",
   priceRange: "$$",

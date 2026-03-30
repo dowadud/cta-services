@@ -12,11 +12,11 @@ export const metadata: Metadata = {
   title: "Floor Equipment Catalog — Sales & Parts | Concord, NC",
   description:
     "Browse CTA Services' full catalog of floor scrubbers, concrete grinders, shot blasters, scarifiers, power trowels, auto scrubbers, and more. Sales and parts in Concord, NC.",
-  alternates: { canonical: "https://ctaservicesnc.com/products" },
+  alternates: { canonical: "https://thectaservices.com/products" },
   openGraph: {
     title: "Floor Equipment Catalog | CTA Services LLC — Concord, NC",
     description: "500+ floor equipment models available for sale in Concord, NC. Scrubbers, grinders, shot blasters, trowels, scarifiers, and replacement parts.",
-    url: "https://ctaservicesnc.com/products",
+    url: "https://thectaservices.com/products",
   },
 };
 
@@ -24,8 +24,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://ctaservicesnc.com" },
-    { "@type": "ListItem", position: 2, name: "Equipment Catalog", item: "https://ctaservicesnc.com/products" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://thectaservices.com" },
+    { "@type": "ListItem", position: 2, name: "Equipment Catalog", item: "https://thectaservices.com/products" },
   ],
 };
 

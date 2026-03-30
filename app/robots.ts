@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/_next/", "/contact/actions"],
       },
     ],
-    sitemap: "https://ctaservicesnc.com/sitemap.xml",
-    host: "https://ctaservicesnc.com",
+    sitemap: "https://thectaservices.com/sitemap.xml",
+    host: "https://thectaservices.com",
   };
 }

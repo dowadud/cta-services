@@ -11,11 +11,11 @@ export const metadata: Metadata = {
   title: "About CTA Services LLC — Floor Equipment Specialists, Concord NC",
   description:
     "CTA Services LLC is a floor equipment company based in Concord, NC. We sell and service industrial floor scrubbers, grinders, shot blasters, and power trowels for contractors and facility teams across the Charlotte metro.",
-  alternates: { canonical: "https://ctaservicesnc.com/about" },
+  alternates: { canonical: "https://thectaservices.com/about" },
   openGraph: {
     title: "About CTA Services LLC — Floor Equipment Specialists, Concord NC",
     description: "CTA Services LLC sells and services industrial floor equipment in Concord, NC. Serving contractors and facility managers across the Charlotte metro.",
-    url: "https://ctaservicesnc.com/about",
+    url: "https://thectaservices.com/about",
   },
 };
 

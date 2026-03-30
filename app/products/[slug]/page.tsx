@@ -29,10 +29,10 @@ export async function generateMetadata({
   const priceStr = product.price ? ` — ${product.price.display}` : "";
   const title = `${product.name}${priceStr} | CTA Services LLC`;
   const description = `${product.shortDescription} Available from CTA Services LLC in Concord, NC. Call 704-458-7691 for pricing and availability.`;
-  const canonicalUrl = `https://ctaservicesnc.com/products/${slug}`;
+  const canonicalUrl = `https://thectaservices.com/products/${slug}`;
   const imageUrl = product.images[0]?.src
-    ? `https://ctaservicesnc.com${product.images[0].src}`
-    : "https://ctaservicesnc.com/og-image.png";
+    ? `https://thectaservices.com${product.images[0].src}`
+    : "https://thectaservices.com/og-image.png";
 
   return {
     title,
@@ -75,9 +75,9 @@ export default async function ProductDetailPage({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://ctaservicesnc.com" },
-      { "@type": "ListItem", position: 2, name: "Equipment Catalog", item: "https://ctaservicesnc.com/products" },
-      { "@type": "ListItem", position: 3, name: product.name, item: `https://ctaservicesnc.com/products/${slug}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://thectaservices.com" },
+      { "@type": "ListItem", position: 2, name: "Equipment Catalog", item: "https://thectaservices.com/products" },
+      { "@type": "ListItem", position: 3, name: product.name, item: `https://thectaservices.com/products/${slug}` },
     ],
   };
 
@@ -87,7 +87,7 @@ export default async function ProductDetailPage({
     name: product.name,
     description: product.shortDescription,
     category: product.category,
-    image: product.images.map((img) => `https://ctaservicesnc.com${img.src}`),
+    image: product.images.map((img) => `https://thectaservices.com${img.src}`),
     brand: {
       "@type": "Brand",
       name: product.name.split(" ")[0],
@@ -98,7 +98,7 @@ export default async function ProductDetailPage({
       price: product.price?.amount ?? undefined,
       priceValidUntil: new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split("T")[0],
       availability: "https://schema.org/InStock",
-      url: `https://ctaservicesnc.com/products/${slug}`,
+      url: `https://thectaservices.com/products/${slug}`,
       seller: {
         "@type": "LocalBusiness",
         name: "CTA Services LLC",

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllProducts } from "@/lib/products";
 
-const BASE = "https://ctaservicesnc.com";
+const BASE = "https://thectaservices.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const products = getAllProducts().slice(0, 500);
